@@ -1,0 +1,48 @@
+<html>
+<style>
+@font-face {
+font-family: 'Maax';
+font-style: normal;
+font-weight: normal;
+src: local('Maax-Regular');
+}
+
+@font-face {
+font-family: 'Maax Bold';
+font-style: normal;
+font-weight: bold;
+src: local('Maax-Bold');
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+
+th {
+	font-family: "Maax Bold", sans-serif;
+}
+
+body { font-family: "Maax", sans-serif; }
+
+strong { font-family: "Maax Bold", sans-serif; }
+</style>
+
+<body>
+	<table style ="width:100%">
+		<caption>A level %LEVEL% %CLASS% using an %WEAPON% with the following stats:<br><br>%WEAPON-MIN%-%WEAPON-MAX% DMG, %ATTRIBUTE-MOD% STR, %ELEMENT-MOD% %ELEMENT% <br><br></caption>
+		<tr>
+			<th> Attack </th>
+			<th> Minimum </th>
+			<th> Maximum </th>
+			<th> DPS </th>
+		</tr>
+		%DATA%
+	</table>
+</body>
+
+</html>

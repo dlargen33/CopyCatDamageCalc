@@ -1,0 +1,3 @@
+[{"name":"Plain-Old Punch","damageModifier":1,"attacksPerSecondModifier":1,"element":"physical"},{"name":"Firemost Smite","damageModifier":0.9,"attacksPerSecondModifier":1.2,"element":"fire"},{"name":"Frosty Cleave","damageModifier":1.2,"attacksPerSecondModifier":0.9,"element":"cold"}]
+ 
+ 
