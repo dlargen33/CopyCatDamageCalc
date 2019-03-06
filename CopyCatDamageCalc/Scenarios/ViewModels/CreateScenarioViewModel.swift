@@ -37,6 +37,9 @@ class CreateScenarioViewModel {
   public let scenarioDriver: Driver<Scenario>
   private let scenarioRelay =  BehaviorRelay<Scenario>(value: Scenario())
   
+  public let validationErrorDriver: Driver<String>
+  private let validationErrorRelay = PublishRelay<String>()
+  
   var weapons: Observable<[String]> {
     get {
       let weapons = self.dataStore.weapons.map { (weapon) in
@@ -53,6 +56,7 @@ class CreateScenarioViewModel {
     self.elementValueDriver = self.elementValueRelay.asDriver()
     self.elementDriver = self.elementRelay.asDriver()
     self.weaponDriver = self.weaponRelay.asDriver()
+    self.validationErrorDriver = validationErrorRelay.asDriver(onErrorJustReturn: "Validation Failed")
   }
   
   func load() {
@@ -61,7 +65,7 @@ class CreateScenarioViewModel {
   
   func selectedSave() {
     guard self.isValid() else {
-      //set a relay so UI can respond
+      validationErrorRelay.accept("Validation failed, missing required values")
       return
     }
     

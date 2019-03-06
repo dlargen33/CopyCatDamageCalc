@@ -167,6 +167,14 @@ class CreateScenarioViewController: UITableViewController, Reusable {
     self.viewModel.elementDriver
       .drive(self.elementType.rx.text)
       .disposed(by: disposeBag)
+    
+    //finally hook the error drive when validation fails
+    self.viewModel.validationErrorDriver
+      .drive(onNext: { (errorString) in
+        let alertController = UIAlertController(title: "Validation Failed", message: errorString, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)        
+      }).disposed(by: disposeBag)
   }
   
 }
